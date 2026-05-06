@@ -5,4 +5,5 @@ namespace NorthcodersRecordShopAPI.Repository;
 public interface IAlbumRepository
 {
     IEnumerable<Album> GetAllAlbums();
+    Album? GetAlbumById(int id);
 }

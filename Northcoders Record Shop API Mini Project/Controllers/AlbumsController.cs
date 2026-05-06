@@ -15,4 +15,12 @@ public class AlbumsController(IAlbumService albumService) : ControllerBase
     {
         return Ok(_albumService.GetAllAlbums());
     }
+
+    [HttpGet("{id}")]
+    public ActionResult<Album> GetAlbumById(int id)
+    {
+        var album = _albumService.GetAlbumById(id);
+        if (album == null) return NotFound();
+        return Ok(album);
+    }
 }

@@ -11,4 +11,9 @@ public class AlbumService(IAlbumRepository albumRepository) : IAlbumService
     {
         return _albumRepository.GetAllAlbums();
     }
+
+    public Album? GetAlbumById(int id)
+    {
+        return _albumRepository.GetAlbumById(id);
+    }
 }
