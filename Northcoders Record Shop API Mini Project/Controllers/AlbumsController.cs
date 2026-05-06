@@ -23,4 +23,11 @@ public class AlbumsController(IAlbumService albumService) : ControllerBase
         if (album == null) return NotFound();
         return Ok(album);
     }
+
+    [HttpPost]
+    public ActionResult<Album> AddAlbum([FromBody] Album album)
+    {
+        var createdAlbum = _albumService.AddAlbum(album);
+        return CreatedAtAction(nameof(GetAlbumById), new { id = createdAlbum.Id }, createdAlbum);
+    }
 }

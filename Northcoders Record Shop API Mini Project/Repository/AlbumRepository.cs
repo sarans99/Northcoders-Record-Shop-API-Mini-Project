@@ -16,4 +16,11 @@ public class AlbumRepository(RecordShopContext context) : IAlbumRepository
     {
         return _context.Albums.FirstOrDefault(a => a.Id == id);
     }
+
+    public Album AddAlbum(Album album)
+    {
+        _context.Albums.Add(album);
+        _context.SaveChanges();
+        return album;
+    }
 }

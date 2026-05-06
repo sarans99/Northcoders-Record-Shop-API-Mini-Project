@@ -6,4 +6,5 @@ public interface IAlbumRepository
 {
     IEnumerable<Album> GetAllAlbums();
     Album? GetAlbumById(int id);
+    Album AddAlbum(Album album);
 }
