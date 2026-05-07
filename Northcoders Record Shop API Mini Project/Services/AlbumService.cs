@@ -21,4 +21,9 @@ public class AlbumService(IAlbumRepository albumRepository) : IAlbumService
     {
         return _albumRepository.AddAlbum(album);
     }
+
+    public Album? UpdateAlbum(int id, Album album)
+    {
+        return _albumRepository.UpdateAlbum(id, album);
+    }
 }

@@ -30,4 +30,12 @@ public class AlbumsController(IAlbumService albumService) : ControllerBase
         var createdAlbum = _albumService.AddAlbum(album);
         return CreatedAtAction(nameof(GetAlbumById), new { id = createdAlbum.Id }, createdAlbum);
     }
+
+    [HttpPut("{id}")]
+    public ActionResult<Album> UpdateAlbum(int id, [FromBody] Album album)
+    {
+        var updatedAlbum = _albumService.UpdateAlbum(id, album);
+        if (updatedAlbum == null) return NotFound();
+        return Ok(updatedAlbum);
+    }
 }

@@ -23,4 +23,20 @@ public class AlbumRepository(RecordShopContext context) : IAlbumRepository
         _context.SaveChanges();
         return album;
     }
+
+    public Album? UpdateAlbum(int id, Album album)
+    {
+        var existing = _context.Albums.FirstOrDefault(a => a.Id == id);
+        if (existing == null) return null;
+
+        existing.Name = album.Name;
+        existing.Artist = album.Artist;
+        existing.Genre = album.Genre;
+        existing.ReleaseYear = album.ReleaseYear;
+        existing.Stock = album.Stock;
+        existing.Price = album.Price;
+
+        _context.SaveChanges();
+        return existing;
+    }
 }
