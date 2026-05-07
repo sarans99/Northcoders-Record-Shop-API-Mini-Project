@@ -26,4 +26,9 @@ public class AlbumService(IAlbumRepository albumRepository) : IAlbumService
     {
         return _albumRepository.UpdateAlbum(id, album);
     }
+
+    public bool DeleteAlbum(int id)
+    {
+        return _albumRepository.DeleteAlbum(id);
+    }
 }

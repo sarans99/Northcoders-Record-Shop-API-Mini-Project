@@ -8,4 +8,5 @@ public interface IAlbumService
     Album? GetAlbumById(int id);
     Album AddAlbum(Album album);
     Album? UpdateAlbum(int id, Album album);
+    bool DeleteAlbum(int id);
 }

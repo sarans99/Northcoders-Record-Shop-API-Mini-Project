@@ -38,4 +38,12 @@ public class AlbumsController(IAlbumService albumService) : ControllerBase
         if (updatedAlbum == null) return NotFound();
         return Ok(updatedAlbum);
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteAlbum(int id)
+    {
+        var deleted = _albumService.DeleteAlbum(id);
+        if (!deleted) return NotFound();
+        return NoContent();
+    }
 }
