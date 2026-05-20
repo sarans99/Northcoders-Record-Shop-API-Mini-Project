@@ -19,6 +19,14 @@ else
     builder.Services.AddDbContext<RecordShopContext>(opt =>
         opt.UseSqlServer(builder.Configuration.GetConnectionString("RecordShopDb")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazor", policy =>
+        policy.WithOrigins("https://localhost:7043", "http://localhost:5258")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -27,6 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowBlazor");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
